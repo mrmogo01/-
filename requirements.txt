@@ -1,0 +1,4 @@
+Flask
+vk_api
+gspread
+google-auth

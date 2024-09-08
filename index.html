@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Отправка сообщений в чат ВКонтакте</h1>
+    <form method="post">
+        <label for="message">Сообщение:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+        <label for="chat_id">Выберите чаты:</label><br>
+        <select id="chat_id" name="chat_id" multiple="multiple" style="width: 50%">
+            {% for option in chat_options %}
+            <option value="{{ option.id }}">{{ option.text }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="submit" value="Отправить">
+    </form>
+    {% for message in feedback %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#chat_id').select2();
+        });
+    </script>
+</body>
+</html>
